@@ -20,7 +20,7 @@
 		},
 		created() {
 			/*fetch from my diaries api*/
-			/*this.$http.get('http://laravel-test.com/api/diaries').then(response => {
+			/*this.$http.get('http://mytest.com/api/diaries').then(response => {
 				this.diaries = response.body.data;
 			}).catch(err => console.log(err))*/
 

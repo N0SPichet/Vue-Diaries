@@ -54,13 +54,13 @@
 				/*this.$http.post('https://jsonplaceholder.typicode.com/posts', {title:this.diary.title, body:this.diary.body, userId:1}).then(function(data) {
 					console.log(data);
 					this.submitted = true;
-				})*/
+				}).catch(err => console.log(err))*/
 
 				/*post to my diaries api*/
-				/*this.$http.post('http://laravel-test.com/api/diary', this.diary).then(response => {
+				/*this.$http.post('http://mytest.com/api/diary', this.diary).then(response => {
 					console.log(response);
 					this.submitted = true;
-				})*/
+				}).catch(err => console.log(err))*/
 
 				/*post to firebase api*/
 				this.$http.post('https://vuediaries.firebaseio.com/diaries.json', this.diary).then(response => {
