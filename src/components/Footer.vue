@@ -1,11 +1,10 @@
 <template>
 	<footer>
-		<p>{{ copyright }} {{ title }}</p>
+		<p>©{{ new Date().getFullYear() }} {{ title }}</p>
 	</footer>
 </template>
 
 <script>
-	import { bus } from '../main';
 	export default {
 		props: {
 			title: {
@@ -14,13 +13,7 @@
 		},
 		data() {
 			return {
-				copyright: 'Copyright 2019 '
 			}
-		},
-		created() {
-			bus.$on('changeTitle', (data) => {
-				this.title = data;
-			})
 		}
 	}
 </script>

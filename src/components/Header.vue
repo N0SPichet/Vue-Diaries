@@ -1,39 +1,42 @@
 <template>
 	<header>
-		<h1 v-on:click="changeTitle">{{ title }}</h1>
+		<nav>
+			<ul>
+				<li><router-link to="/" class="btn ">Diaries</router-link></li>
+				<li><router-link to="/create" class="btn ">Create Diary</router-link></li>
+			</ul>
+		</nav>
 	</header>
 </template>
 
 <script>
-	import { bus } from '../main';
 	export default {
-		props: {
-			title: {
-				type: String
-			}
-		},
 		data() {
 			return {
-				
-			}
-		},
-		methods: {
-			changeTitle() {
-				// this.$emit('changeTitle', 'My Diary Blogs');
-				this.title = 'My Diary Blogs';
-				bus.$emit('changeTitle', 'My Diary Blogs');
 			}
 		}
 	}
 </script>
 
 <style scoped>
-header {
-	background: lightgreen;
-	padding: 10px;
-}
-h1 {
-	color: #222;
-	text-align: center;
-}
+	nav {
+		background: #444;
+		padding: 14px 0;
+		margin-bottom: 40px;
+	}
+	ul {
+		list-style-type: none;
+		text-align: center;
+		margin: 0;
+	}
+	li {
+		display: inline;
+	}
+	.btn {
+		color: #fff;
+	}
+	.router-link-exact-active {
+		background: #eee;
+		color: #444;
+	}
 </style>

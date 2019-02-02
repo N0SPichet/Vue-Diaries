@@ -1,8 +1,9 @@
 <template>
 	<div id="app">
-		<app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
-		<create-diary></create-diary>
-		<app-diaries v-bind:diaries="diaries"></app-diaries>
+		<app-header></app-header>
+		<router-view v-bind:title="title" class="mg-bt"></router-view>
+		<!-- <create-diary></create-diary> -->
+		<!-- <app-diaries v-bind:diaries="diaries"></app-diaries> -->
 		<app-footer v-bind:title="title"></app-footer>
 	</div>
 </template>
@@ -25,25 +26,17 @@ export default {
 	data () {
 		return {
 			diaries: [],
-			title: 'My Diary Blogs'
+			title: 'Vue Diaries'
 		}
-	},
-	methods: {
-		updateTitle(event) {
-			this.title = event;
-		}
-	},
-	created() {
-		this.$http.get('http://localhost/Blogs-API/public/api/diaries').then(function(data) {
-			this.diaries = data.body.data;
-		})
 	}
 }
 </script>
 
-<style scoped>
-	h1 {
-		color: red;
-		text-transform: uppercase;
+<style>
+	a:hover {
+		text-decoration: none!important;
+	}
+	.mg-bt {
+		margin-bottom: 80px!important;
 	}
 </style>

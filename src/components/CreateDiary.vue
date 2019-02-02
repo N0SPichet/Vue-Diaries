@@ -2,7 +2,7 @@
 	<div id="create-diary">
 		<form-helper v-if="!submitted">
 			<div slot="form-header">
-				<h2>Add a New Diary</h2>
+				<h1>Add a New Diary</h1>
 			</div>
 			<div slot="form-fields">
 				<label>Title</label>
@@ -50,18 +50,22 @@
 		},
 		methods: {
 			post() {
-				this.$http.post('https://jsonplaceholder.typicode.com/posts', {title:this.diary.title, body:this.diary.body, userId:1}).then(function(data) {
+				/*post to online fake api*/
+				/*this.$http.post('https://jsonplaceholder.typicode.com/posts', {title:this.diary.title, body:this.diary.body, userId:1}).then(function(data) {
 					console.log(data);
 					this.submitted = true;
-				})
+				})*/
 
-				// let headers = {
-    // 				'Content-Type': 'application/json;charset=utf-8'
-  		// 		};
-				// this.$http.post('http://localhost/Blogs-API/public/api/diary', {title:this.diary.title,	body:this.diary.body}, {headers}).then(function(data) {
-				// 	console.log(data);
-				// 	this.submitted = true;
-				// })
+				/*post to my diaries api*/
+				/*this.$http.post('http://laravel-test.com/api/diary', this.diary).then(response => {
+					console.log(response);
+					this.submitted = true;
+				})*/
+
+				/*post to firebase api*/
+				this.$http.post('https://vuediaries.firebaseio.com/diaries.json', this.diary).then(response => {
+					this.submitted = true;
+				}).catch(err => console.log(err))
 			}
 		}
 	}
@@ -72,8 +76,10 @@
 		box-sizing: border-box;
 	}
 	#create-diary {
-		width: 600px;
-		margin: 20px auto;
+		width: 100%;
+		max-width: 800px;
+		margin: 40px auto;
+		padding: 0 20px;
 	}
 	#form-checkboxes label {
 		margin-right: 10px;

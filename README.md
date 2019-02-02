@@ -1,6 +1,6 @@
-# vue-blog
+# vue-diaries
 
-> blog
+> diaries
 
 ## Build Setup
 

@@ -3,7 +3,7 @@
 		<h1>All Diaries</h1>
 		<input type="text" v-model="search" placeholder="search diaries.." class="form-control">
 		<div v-for="diary in filteredDiaries" class="single-diary">
-			<h3 v-rainbow>{{ diary.title | to-uppercase }}</h3>
+			<router-link v-bind:to="'/diary/'+diary.id"><h3 v-rainbow>{{ diary.title | to-uppercase }}</h3></router-link>
 			<h4>{{ diary.body | snippet }}</h4>
 		</div>
 	</div>
@@ -11,16 +11,30 @@
 
 <script>
 	export default {
-		props: {
-			diaries: {
-				type: Array,
-				required: true
-			}
-		},
+		props: {},
 		data() {
 			return {
+				diaries:[],
 				search:[]
 			}
+		},
+		created() {
+			/*fetch from my diaries api*/
+			/*this.$http.get('http://laravel-test.com/api/diaries').then(response => {
+				this.diaries = response.body.data;
+			}).catch(err => console.log(err))*/
+
+			/*fetch from firebase*/
+			this.$http.get('https://vuediaries.firebaseio.com/diaries.json').then(response => {
+				return response.json();
+			}).then(data => {
+				var diariesArray = [];
+				for (let key in data) {
+					data[key].id = key;
+					diariesArray.push(data[key]);
+				}
+				this.diaries = diariesArray;
+			}).catch(err => console.log(err))
 		},
 		computed: {
 			filteredDiaries() {
@@ -46,27 +60,10 @@
 		margin: 40px auto;
 		padding: 0 20px;
 		box-sizing: border-box;
-		margin-bottom: 80px;
 	}
 	.single-diary {
 		padding: 30px;
 		margin: 10px;
 		border: 1px solid #222;
-	}
-	.form-control {
-	    display: block;
-	    width: 100%;
-	    padding: .375rem .75rem;
-	    font-size: 1rem;
-	    line-height: 1.5;
-	    color: #495057;
-	    background-color: #fff;
-	    background-clip: padding-box;
-	    border: 1px solid #ced4da;
-	    border-radius: .25rem;
-	    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	}
-	.form-control {
-		margin: 10px auto;
 	}
 </style>

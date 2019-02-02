@@ -1,5 +1,5 @@
 {
-  "name": "vue-blog",
+  "name": "vue-diaries",
   "description": "blog",
   "version": "1.0.0",
   "author": "Pichet Fueangfu <28233224+N0SPichet@users.noreply.github.com>",
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "vue": "^2.5.11",
-    "vue-resource": "^1.5.1"
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.2"
   },
   "browserslist": [
     "> 1%",
